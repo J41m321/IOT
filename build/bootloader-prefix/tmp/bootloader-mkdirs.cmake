@@ -10,18 +10,18 @@ if(NOT EXISTS "C:/Users/nico_/esp/esp-idf/components/bootloader/subproject")
   file(MAKE_DIRECTORY "C:/Users/nico_/esp/esp-idf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader"
-  "C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader-prefix"
-  "C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader-prefix/tmp"
-  "C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader-prefix/src/bootloader-stamp"
-  "C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader-prefix/src"
-  "C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader"
+  "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader-prefix"
+  "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader-prefix/tmp"
+  "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader-prefix/src"
+  "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

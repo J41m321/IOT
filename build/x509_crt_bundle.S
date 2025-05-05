@@ -1,4 +1,4 @@
-/* * Data converted from C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)

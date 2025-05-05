@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/main
+# Install script for directory: C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
