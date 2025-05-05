@@ -18,8 +18,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader/bootloader.elf
+    add-symbol-file C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/wifi.elf
+file C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/wifi.elf

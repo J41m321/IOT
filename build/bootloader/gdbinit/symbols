@@ -22,4 +22,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file C:/Users/nico_/Desktop/Universidad/iot/C_digo_aux_3/wifi_connect/build/bootloader/bootloader.elf
+file C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build/bootloader/bootloader.elf

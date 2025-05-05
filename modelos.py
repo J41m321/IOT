@@ -6,9 +6,9 @@ from datetime import datetime
 db_config = {
     'host': 'localhost', 
     'port': 5432, 
-    'user': 'postgres', 
-    'password': 'postgres', 
-    'database': 'iot_db'
+    'user': 'myuser', 
+    'password': 'mypassword', 
+    'database': 'mydatabase'
 }
 db = PostgresqlExtDatabase(**db_config)
 db.connect()
