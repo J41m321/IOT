@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "wifi",
-    "project_version":    "6bfb8bc-dirty",
+    "project_version":    "3528e33-dirty",
     "project_path":       "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT",
     "idf_path":           "C:/Users/nico_/esp/esp-idf",
     "build_dir":          "C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/build",

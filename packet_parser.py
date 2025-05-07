@@ -104,7 +104,7 @@ def parse_body(header: list, packet: bytes) -> dict:
             
         elif id_protocol == 3:
             # Cambiar el formato para coincidir con lo que envía el cliente C
-            parsed_data = struct.unpack('<BLBiBfffffffff', packet[:39])
+            parsed_data = struct.unpack('<BLBiBfffffff', packet[:39])
             datos_dict["batt_level"] = parsed_data[0]
             datos_dict["timestamp"] = datetime.fromtimestamp(parsed_data[1])
             datos_dict["temp"] = parsed_data[2]
@@ -117,7 +117,6 @@ def parse_body(header: list, packet: bytes) -> dict:
             datos_dict["amp_y"] = parsed_data[9]
             datos_dict["freq_y"] = parsed_data[10]
             datos_dict["amp_z"] = parsed_data[11]
-            datos_dict["freq_z"] = parsed_data[12]
             
         elif id_protocol == 4:
             # Protocolo 4 (manejar arrays)
