@@ -25,6 +25,12 @@
 float randomInRange(float min, float max) {
     return min + ((float)rand() / RAND_MAX) * (max - min);
 }
+// Función para generar un número aleatorio entre 0 y 100
+uint8_t generateBatteryLevel() {
+    // Genera un número aleatorio en el rango de 0 a 100
+    uint8_t randomBatteryLevel = (uint8_t)(rand() % 101);
+    return randomBatteryLevel;
+}
 
 uint8_t generateRandomUInt8() {
     // Genera un número aleatorio en el rango de 0 a 100
@@ -236,7 +242,7 @@ uint8_t* create_message(Client * self){
         body_size = 15;
         break;
     case 3:
-        body_size = 15 + 7*4;
+        body_size = 39;
         break;
     case 4:
         body_size = 15 + 12000*sizeof(float);
@@ -268,13 +274,72 @@ uint8_t* create_message(Client * self){
         int press = generatePressure();
         int hum = generateHumidity();
         float co = generateCO();
-	printf("CO: %f", co);
+	    printf("CO: %f", co);
         memcpy(message+11,&temperature,1);
         memcpy(message+12,&press,4);
         memcpy(message+16,&hum,1);
         memcpy(message+17,&co,4);
     }
-
+    if(id_protocol == 3){
+        uint8_t batt_level = generateBatteryLevel();
+        time_t timestamp = time(NULL);
+        uint8_t temp = generateTemperature();
+        int press = generatePressure();
+        uint8_t hum = generateHumidity();
+        float co = generateCO();
+        float amp_x = generateAmpx();
+        float freq_x = generateFreqx();
+        float amp_y = generateAmpy();
+        float freq_y = generateFreqy();
+        float amp_z = generateAmpz();
+        float freq_z = generateFreqz();
+        float rms = generateRMS(amp_x, amp_y, amp_z);
+    
+        // Configurar el mensaje
+        int body_size = 45; // 1 + 4 + 1 + 4 + 1 + 4 + 4*8 = 39 bytes
+        message = (uint8_t*) malloc(6 + body_size);
+        if (message == NULL) {
+            return NULL;
+        }
+        
+        header_message(self, message, body_size);
+    
+        // Copiar datos al body
+        int offset = 6;
+        memcpy(message + offset, &batt_level, 1); offset += 1;
+        memcpy(message + offset, &timestamp, 4); offset += 4;
+        memcpy(message + offset, &temp, 1); offset += 1;
+        memcpy(message + offset, &press, 4); offset += 4;
+        memcpy(message + offset, &hum, 1); offset += 1;
+        memcpy(message + offset, &co, 4); offset += 4;
+        memcpy(message + offset, &rms, 4); offset += 4;
+        memcpy(message + offset, &amp_x, 4); offset += 4;
+        memcpy(message + offset, &freq_x, 4); offset += 4;
+        memcpy(message + offset, &amp_y, 4); offset += 4;
+        memcpy(message + offset, &freq_y, 4); offset += 4;
+        memcpy(message + offset, &amp_z, 4); offset += 4;
+        memcpy(message + offset, &freq_z, 4); offset += 4;
+    }
+    if(id_protocol == 4){
+        time_t timeStamp = time(NULL);
+        memcpy(message+7,&timeStamp,4);
+        float Ampx = generateAmpx();
+        float Freqx = generateFreqx();
+        float Ampy = generateAmpy();
+        float Freqy = generateFreqy();
+        float Ampz = generateAmpz();
+        float Freqz = generateFreqz();
+        float RMS = generateRMS(Ampx, Ampy, Ampz);
+        memcpy(message+11,&Ampx,4);
+        memcpy(message+15,&Freqx,4);
+        memcpy(message+19,&Ampy,4);
+        memcpy(message+23,&Freqy,4);
+        memcpy(message+27,&Ampz,4);
+        memcpy(message+31,&Freqz,4);
+        memcpy(message+35,&RMS,4);
+    }
+    printf("Message size: header=%d + body=%d = total=%d bytes\n", 
+        6, body_size, 6 + body_size);
     return message; 
 }
 uint8_t* create_header_message(Client * self){
@@ -289,7 +354,7 @@ InitialConfig unpack_initial_conf(char *packet) {
     InitialConfig config;
     memcpy(&(config.id_protocol), packet, 1);
     memcpy(&(config.transport_layer), packet + 1, 1);
-
+    
     printf("Transport Layer: %d\n", config.transport_layer);
     printf("ID Protocol: %d\n", config.id_protocol);
     return config;
@@ -361,22 +426,48 @@ void socket_tcp(uint8_t* message){
     close(sock);
 }
 
+void socket_udp(uint8_t* message, Client *client) {
+    struct sockaddr_in server_addr;
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(SERVER_PORT);
+    inet_pton(AF_INET, SERVER_IP, &server_addr.sin_addr.s_addr);
 
+    int sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_IP);
+    if (sock < 0) {
+        ESP_LOGE(TAG, "Error al crear socket UDP");
+        return;
+    }
 
-void app_main(void){
-    // lógica para conectarse a red wifi
+    // Envía el mensaje COMPLETO (header + body)
+    int bytes_sent = sendto(sock, message, client->length, 0,
+                           (struct sockaddr*)&server_addr, sizeof(server_addr));
+    
+    ESP_LOGI(TAG, "Bytes enviados: %d (esperados: %d)", bytes_sent, client->length);
+    
+    if (bytes_sent != client->length) {
+        ESP_LOGE(TAG, "Error: no se enviaron todos los bytes");
+    }
+
+    close(sock);
+}
+
+void app_main() {
     nvs_init();
     wifi_init_sta(WIFI_SSID, WIFI_PASSWORD);
-    ESP_LOGI(TAG,"Conectado a WiFi!\n");
-    Client client_instance;
-    //mandamos un primer mensaje para poder conocer los valores de la cabecera. 
+    ESP_LOGI(TAG, "Conectado a WiFi!");
+
+    Client client_instance;  // Declaración de la estructura
     initial_socket_tcp(&client_instance);
-    
-    //uint8_t* message = create_header_message(&client_instance);
-    printf("hola\n");
+
     uint8_t* message = create_message(&client_instance);
 
-    socket_tcp(message);
-    free(message);
+    if (client_instance.transport_layer == 0) {
+        socket_tcp(message);
+        printf("TCP message sent\n");
+    } else {
+        socket_udp(message, &client_instance);  // <- Pasa &client_instance
+        printf("UDP message sent\n");
+    }
 
+    free(message);
 }

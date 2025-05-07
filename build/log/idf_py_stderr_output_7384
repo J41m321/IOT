@@ -1,0 +1,121 @@
+[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM3 instead...[0m
+[0;33m--- esp-idf-monitor 1.6.0 on \\.\COM3 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x40081b3d: panic_abort at C:/Users/nico_/esp/esp-idf/components/esp_system/panic.c:454
+--- 0x400897c1: esp_system_abort at C:/Users/nico_/esp/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4009150d: __assert_func at C:/Users/nico_/esp/esp-idf/components/newlib/assert.c:80
+--- 0x4008eee4: block_trim_free at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf_control_functions.h:548 (discriminator 3)
+---  (inlined by) block_prepare_used at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf_control_functions.h:631 (discriminator 3)
+---  (inlined by) tlsf_malloc at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf.c:444 (discriminator 3)
+--- 0x4008e821: multi_heap_malloc_impl at C:/Users/nico_/esp/esp-idf/components/heap/multi_heap.c:209
+--- 0x4008236d: aligned_or_unaligned_alloc at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:82
+--- 0x40082495: heap_caps_aligned_alloc_base at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:156
+--- 0x400824c5: heap_caps_malloc_base at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:176
+--- 0x400820c8: heap_caps_malloc at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps.c:84
+--- 0x400820fd: heap_caps_malloc_default at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps.c:110
+--- 0x4009151d: malloc at C:/Users/nico_/esp/esp-idf/components/newlib/heap.c:24
+--- 0x400df781: mem_malloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/mem.c:209
+--- 0x400df820: do_memp_malloc_pool at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/memp.c:268
+--- 0x400df8ae: memp_malloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/memp.c:370
+--- 0x400efe75: netconn_alloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/api_msg.c:736
+--- 0x400eedcf: netconn_new_with_proto_and_callback at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/api_lib.c:158
+--- 0x400deeea: lwip_socket at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/sockets.c:1746 (discriminator 12)
+--- 0x400d8d7c: socket at C:/Users/nico_/esp/esp-idf/components/lwip/include/lwip/sockets.h:48
+---  (inlined by) socket_udp at C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main/wifi.c:434
+--- 0x400d8e2b: app_main at C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main/wifi.c:467
+--- 0x401532a7: main_task at C:/Users/nico_/esp/esp-idf/components/freertos/app_startup.c:208
+--- 0x4008a265: vPortTaskWrapper at C:/Users/nico_/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x40081b3d: panic_abort at C:/Users/nico_/esp/esp-idf/components/esp_system/panic.c:454
+--- 0x400897c1: esp_system_abort at C:/Users/nico_/esp/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4009150d: __assert_func at C:/Users/nico_/esp/esp-idf/components/newlib/assert.c:80
+--- 0x4008eee4: block_trim_free at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf_control_functions.h:548 (discriminator 3)
+---  (inlined by) block_prepare_used at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf_control_functions.h:631 (discriminator 3)
+---  (inlined by) tlsf_malloc at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf.c:444 (discriminator 3)
+--- 0x4008e821: multi_heap_malloc_impl at C:/Users/nico_/esp/esp-idf/components/heap/multi_heap.c:209
+--- 0x4008236d: aligned_or_unaligned_alloc at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:82
+--- 0x40082495: heap_caps_aligned_alloc_base at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:156
+--- 0x400824c5: heap_caps_malloc_base at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:176
+--- 0x400820c8: heap_caps_malloc at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps.c:84
+--- 0x400820fd: heap_caps_malloc_default at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps.c:110
+--- 0x4009151d: malloc at C:/Users/nico_/esp/esp-idf/components/newlib/heap.c:24
+--- 0x400df781: mem_malloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/mem.c:209
+--- 0x400df820: do_memp_malloc_pool at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/memp.c:268
+--- 0x400df8ae: memp_malloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/memp.c:370
+--- 0x400efe75: netconn_alloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/api_msg.c:736
+--- 0x400eedcf: netconn_new_with_proto_and_callback at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/api_lib.c:158
+--- 0x400deeea: lwip_socket at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/sockets.c:1746 (discriminator 12)
+--- 0x400d8d7c: socket at C:/Users/nico_/esp/esp-idf/components/lwip/include/lwip/sockets.h:48
+---  (inlined by) socket_udp at C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main/wifi.c:434
+--- 0x400d8e2b: app_main at C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main/wifi.c:467
+--- 0x401532a7: main_task at C:/Users/nico_/esp/esp-idf/components/freertos/app_startup.c:208
+--- 0x4008a265: vPortTaskWrapper at C:/Users/nico_/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x40081b3d: panic_abort at C:/Users/nico_/esp/esp-idf/components/esp_system/panic.c:454
+--- 0x400897c1: esp_system_abort at C:/Users/nico_/esp/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4009150d: __assert_func at C:/Users/nico_/esp/esp-idf/components/newlib/assert.c:80
+--- 0x4008eee4: block_trim_free at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf_control_functions.h:548 (discriminator 3)
+---  (inlined by) block_prepare_used at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf_control_functions.h:631 (discriminator 3)
+---  (inlined by) tlsf_malloc at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf.c:444 (discriminator 3)
+--- 0x4008e821: multi_heap_malloc_impl at C:/Users/nico_/esp/esp-idf/components/heap/multi_heap.c:209
+--- 0x4008236d: aligned_or_unaligned_alloc at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:82
+--- 0x40082495: heap_caps_aligned_alloc_base at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:156
+--- 0x400824c5: heap_caps_malloc_base at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:176
+--- 0x400820c8: heap_caps_malloc at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps.c:84
+--- 0x400820fd: heap_caps_malloc_default at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps.c:110
+--- 0x4009151d: malloc at C:/Users/nico_/esp/esp-idf/components/newlib/heap.c:24
+--- 0x400df781: mem_malloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/mem.c:209
+--- 0x400df820: do_memp_malloc_pool at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/memp.c:268
+--- 0x400df8ae: memp_malloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/memp.c:370
+--- 0x400efe75: netconn_alloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/api_msg.c:736
+--- 0x400eedcf: netconn_new_with_proto_and_callback at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/api_lib.c:158
+--- 0x400deeea: lwip_socket at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/sockets.c:1746 (discriminator 12)
+--- 0x400d8d7c: socket at C:/Users/nico_/esp/esp-idf/components/lwip/include/lwip/sockets.h:48
+---  (inlined by) socket_udp at C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main/wifi.c:434
+--- 0x400d8e2b: app_main at C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main/wifi.c:467
+--- 0x401532a7: main_task at C:/Users/nico_/esp/esp-idf/components/freertos/app_startup.c:208
+--- 0x4008a265: vPortTaskWrapper at C:/Users/nico_/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x40081b3d: panic_abort at C:/Users/nico_/esp/esp-idf/components/esp_system/panic.c:454
+--- 0x400897c1: esp_system_abort at C:/Users/nico_/esp/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4009150d: __assert_func at C:/Users/nico_/esp/esp-idf/components/newlib/assert.c:80
+--- 0x4008eee4: block_trim_free at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf_control_functions.h:548 (discriminator 3)
+---  (inlined by) block_prepare_used at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf_control_functions.h:631 (discriminator 3)
+---  (inlined by) tlsf_malloc at C:/Users/nico_/esp/esp-idf/components/heap/tlsf/tlsf.c:444 (discriminator 3)
+--- 0x4008e821: multi_heap_malloc_impl at C:/Users/nico_/esp/esp-idf/components/heap/multi_heap.c:209
+--- 0x4008236d: aligned_or_unaligned_alloc at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:82
+--- 0x40082495: heap_caps_aligned_alloc_base at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:156
+--- 0x400824c5: heap_caps_malloc_base at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps_base.c:176
+--- 0x400820c8: heap_caps_malloc at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps.c:84
+--- 0x400820fd: heap_caps_malloc_default at C:/Users/nico_/esp/esp-idf/components/heap/heap_caps.c:110
+--- 0x4009151d: malloc at C:/Users/nico_/esp/esp-idf/components/newlib/heap.c:24
+--- 0x400df781: mem_malloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/mem.c:209
+--- 0x400df820: do_memp_malloc_pool at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/memp.c:268
+--- 0x400df8ae: memp_malloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/core/memp.c:370
+--- 0x400efe75: netconn_alloc at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/api_msg.c:736
+--- 0x400eedcf: netconn_new_with_proto_and_callback at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/api_lib.c:158
+--- 0x400deeea: lwip_socket at C:/Users/nico_/esp/esp-idf/components/lwip/lwip/src/api/sockets.c:1746 (discriminator 12)
+--- 0x400d8d7c: socket at C:/Users/nico_/esp/esp-idf/components/lwip/include/lwip/sockets.h:48
+---  (inlined by) socket_udp at C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main/wifi.c:434
+--- 0x400d8e2b: app_main at C:/Users/nico_/Desktop/Universidad/iot/tarea1/IOT/main/wifi.c:467
+--- 0x401532a7: main_task at C:/Users/nico_/esp/esp-idf/components/freertos/app_startup.c:208
+--- 0x4008a265: vPortTaskWrapper at C:/Users/nico_/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0m
