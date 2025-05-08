@@ -100,6 +100,7 @@ typedef struct {
     uint8_t transport_layer;
     uint8_t id_protocol;
     uint16_t length;
+    char mac[18];
 } Client;
 //Credenciales de WiFi
 #define WIFI_SSID "Marymontecinos"   //"VTR-4871545" wifipancho" 
@@ -210,6 +211,47 @@ char * pack(Header h, Body b) {
     return packet;
 }
 */
+
+// #include <stdlib.h>
+
+// #include "esp_event.h"
+// #include "esp_mac.h"
+// #include "esp_netif.h"
+// #include "nvs_flash.h"
+// #include "protocol_examples_common.h"
+
+// uint8_t mac[6];
+// uint16_t device_id;
+// Client c;
+// c.id = device_id;  // asignar id
+
+// char * pack(int packet_id, float value_float, char * text) {
+//     int largo_text = strlen(text);
+//     char * packet = malloc(12 + largo_text);
+//     memcpy(packet, &packet_id, 4);
+//     memcpy(packet + 4, &value_float, 4);
+//     memcpy(packet + 8, &largo_text, 4);
+//     memcpy(packet + 12, text, largo_text);
+//     return packet;
+// }
+
+
+// void get_mac_address(uint8_t *mac) {
+//     int err = esp_efuse_mac_get_default(mac);
+//     if (err != ESP_OK) {
+//         ESP_LOGE(TAG, "Error getting MAC address: %d", err);
+//         return;
+//     }
+
+//     ESP_LOGI(TAG, "MAC address: %02X:%02X:%02X:%02X:%02X:%02X", mac[0], mac[1],
+//              mac[2], mac[3], mac[4], mac[5]);
+// }
+// void generate_device_id(const uint8_t *mac, uint16_t *device_id) {
+//     *device_id = (mac[0] ^ mac[3]) | ((mac[1] ^ mac[4]) << 8) |
+//                  ((mac[2] ^ mac[5]) << 16);
+// }
+
+
 
 void header_message( Client * self, uint8_t* buffer, int body_lenght){
     //por mientras no estamos mandando MAC  
@@ -419,7 +461,9 @@ void socket_tcp(uint8_t* message){
     }
     printf("enviamos el mensaje");
 
-    send(sock, message, 21, 0);
+    send(sock, message, 42, 0);
+    free(message);
+
 
     
     // Cerrar el socket
@@ -451,6 +495,7 @@ void socket_udp(uint8_t* message, Client *client) {
     close(sock);
 }
 
+
 void app_main() {
     nvs_init();
     wifi_init_sta(WIFI_SSID, WIFI_PASSWORD);
@@ -458,6 +503,16 @@ void app_main() {
 
     Client client_instance;  // Declaración de la estructura
     initial_socket_tcp(&client_instance);
+
+    
+    // get_mac_address(mac);
+    // generate_device_id(mac, &device_id);
+    // ESP_LOGI(TAG, "Device ID: %u", device_id);
+
+    // int packet_id = device_id;
+    // char *packed = pack(packet_id, 1, mensaje);
+
+
 
     uint8_t* message = create_message(&client_instance);
 

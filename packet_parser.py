@@ -8,13 +8,15 @@ from datetime import datetime
 
 
 char * pack(int packet_id, float value_float, char * text) {
-    char * packet = malloc(12 + strlen(text));
+    int largo_text = strlen(text);
+    char * packet = malloc(12 + largo_text);
     memcpy(packet, &packet_id, 4);
     memcpy(packet + 4, &value_float, 4);
     memcpy(packet + 8, &largo_text, 4);
     memcpy(packet + 12, text, largo_text);
     return packet;
 }
+
 
 //Luego mandan el paquete por el socket
 
@@ -71,6 +73,13 @@ def parse_body(header: list, packet: bytes) -> dict:
     datos_dict = {}
     logs_dict = {}
     loss_dict = {}
+
+    # parsed_data = struct.unpack('<H', packet[:2])
+    # device_id = parsed_data[0]
+
+    # datos_dict["id_device"] = str(device_id)
+    # logs_dict["id_device"] = str(device_id)
+
 
     datos_dict["id_device"] = "123456"
     datos_dict["mac"] = "123456"
