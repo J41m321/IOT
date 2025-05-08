@@ -59,3 +59,8 @@ psql -h localhost -U miusuario -d midatabase
 docker compose down
 docker compose down -v  # (Esto borra los datos)
 ```
+
+
+## Avance de la tarea
+
+* Esta tarea entrega bien para protocolos 0-3, para UDP y TCP, cambiando en la base de datos el valor del transport layer entre 0 (tcp) y 1 (udp), esto guardando archivos en Docker en Raspberry y ejecutando en ESP32. 
