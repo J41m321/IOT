@@ -74,15 +74,15 @@ def parse_body(header: list, packet: bytes) -> dict:
     logs_dict = {}
     loss_dict = {}
 
-    parsed_data = struct.unpack('<H', packet[:2])
-    device_id = parsed_data[0]
+    # parsed_data = struct.unpack('<H', packet[:2])
+    # device_id = parsed_data[0]
 
-    datos_dict["id_device"] = str(device_id)
-    logs_dict["id_device"] = str(device_id)
+    # datos_dict["id_device"] = str(device_id)
+    # logs_dict["id_device"] = str(device_id)
 
 
-    # datos_dict["id_device"] = "123456"
-    # datos_dict["mac"] = "123456"
+    datos_dict["id_device"] = "123456"
+    datos_dict["mac"] = "123456"
 
     logs_dict["id_device"] = "123456"
     logs_dict["id_protocol"] = header["id_protocol"]
